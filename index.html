@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Blog</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hero-image {
+      background-image: url('https://www.gstatic.com/webp/gallery/1.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+    }
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      text-align: center;
+    }
+    .feedback-container {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Food Blog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#feedbackForm">Feedback</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Image Section -->
+  <div class="hero-image">
+    <div class="hero-text">
+      <h1>Welcome to the Food Blog</h1>
+      <p>Discover amazing recipes and food ideas!</p>
+    </div>
+  </div>
+
+  <!-- Blog Content Section -->
+  <div class="container mt-5">
+    <h2>Latest Recipes</h2>
+    <div class="row">
+      <!-- Blog Post 1 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://www.gstatic.com/webp/gallery/1.jpg" class="card-img-top" alt="Recipe 1">
+          <div class="card-body">
+            <h5 class="card-title">Delicious Pancakes</h5>
+            <p class="card-text">A simple recipe for making fluffy and tasty pancakes.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+      <!-- Blog Post 2 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://www.gstatic.com/webp/gallery/1.jpg" class="card-img-top" alt="Recipe 2">
+          <div class="card-body">
+            <h5 class="card-title">Healthy Salad</h5>
+            <p class="card-text">A fresh and healthy salad packed with nutrients.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+      <!-- Blog Post 3 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://www.gstatic.com/webp/gallery/1.jpg" class="card-img-top" alt="Recipe 3">
+          <div class="card-body">
+            <h5 class="card-title">Spaghetti Bolognese</h5>
+            <p class="card-text">A classic Italian dish with a rich meat sauce.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feedback Form Section -->
+  <div class="container feedback-container" id="feedbackForm">
+    <h2>User Feedback</h2>
+    <form id="feedbackForm" onsubmit="submitFeedback(event)">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="feedback">Your Feedback</label>
+        <textarea class="form-control" id="feedback" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit Feedback</button>
+    </form>
+    <div id="responseMessage" class="mt-3"></div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- JavaScript for feedback form -->
+  <script>
+    function submitFeedback(event) {
+      event.preventDefault();
+      
+      var name = document.getElementById('name').value;
+      var feedback = document.getElementById('feedback').value;
+
+      if (name && feedback) {
+        document.getElementById('responseMessage').innerHTML = `<div class="alert alert-success" role="alert">Thank you for your feedback, ${name}!</div>`;
+        document.getElementById('feedbackForm').reset();
+      } else {
+        document.getElementById('responseMessage').innerHTML = `<div class="alert alert-danger" role="alert">Please fill out all fields!</div>`;
+      }
+    }
+  </script>
+</body>
+</html>
